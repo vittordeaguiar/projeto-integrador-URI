@@ -1,34 +1,24 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
 
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next();
+export function middleware(req: NextRequest) {
+  const authCookie = req.cookies
+    .getAll()
+    .find(
+      (cookie) =>
+        cookie.name.includes("supabase") ||
+        cookie.name.includes("sb-") ||
+        cookie.name.includes("auth-token"),
+    );
 
-  const supabase = createMiddlewareClient({ req, res });
+  console.log("Auth cookie found:", authCookie?.name);
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  console.log(session);
-
-  if (
-    !session &&
-    req.nextUrl.pathname !== "/login" &&
-    req.nextUrl.pathname !== "/" &&
-    req.nextUrl.pathname !== "/novo-ticket" &&
-    !req.nextUrl.pathname.startsWith("/images") &&
-    !req.nextUrl.pathname.startsWith("/icons")
-  ) {
-    return NextResponse.redirect(new URL("/login", req.url));
+  if (req.nextUrl.pathname === "/dashboard") {
+    console.log("Allowing access to dashboard");
+    return NextResponse.next();
   }
 
-  if (session && req.nextUrl.pathname === "/login") {
-    return NextResponse.redirect(new URL("/dashboard", req.url));
-  }
-
-  return res;
+  return NextResponse.next();
 }
 
 export const config = {
