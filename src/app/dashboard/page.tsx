@@ -111,20 +111,23 @@ export default function DashboardPage() {
     }
 
     filtered.sort((a, b) => {
-      let aValue = a[sortBy as keyof Ticket];
-      let bValue = b[sortBy as keyof Ticket];
-
       if (sortBy === "priority") {
         const priorityOrder = { urgente: 4, alta: 3, normal: 2, baixa: 1 };
-        aValue = priorityOrder[a.priority as keyof typeof priorityOrder] || 0;
-        bValue = priorityOrder[b.priority as keyof typeof priorityOrder] || 0;
+        const aValue = priorityOrder[a.priority as keyof typeof priorityOrder] || 0;
+        const bValue = priorityOrder[b.priority as keyof typeof priorityOrder] || 0;
+
+        if (sortOrder === "asc") return aValue - bValue;
+
+        return bValue - aValue;
       }
 
-      if (sortOrder === "asc") {
-        return aValue > bValue ? 1 : -1;
-      } else {
-        return aValue < bValue ? 1 : -1;
-      }
+      // Para outros campos
+      const aValue = a[sortBy as keyof Ticket];
+      const bValue = b[sortBy as keyof Ticket];
+
+      if (sortOrder === "asc") return aValue > bValue ? 1 : -1;
+
+      return aValue < bValue ? 1 : -1;
     });
 
     setFilteredTickets(filtered);
@@ -187,7 +190,8 @@ export default function DashboardPage() {
 
         {/* User Info */}
         <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-          <h2 className="text-xl font-semibold mb-4">Bem-vindo, {user.name}!</h2>
+           {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
+          <h2 className="text-xl font-semibold mb-4">Bem-vindo, {(user as any).name}!</h2>
           <p className="text-zinc-600">Você está conectado como: {user.role}</p>
         </div>
 

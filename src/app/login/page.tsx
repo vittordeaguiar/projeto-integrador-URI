@@ -33,6 +33,7 @@ export default function LoginPage() {
         router.refresh();
       }
     } catch (err) {
+      console.error("Erro ao criar ticket:", err);
       setError("Erro ao fazer login. Tente novamente.");
     } finally {
       setLoading(false);
