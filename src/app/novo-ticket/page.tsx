@@ -65,11 +65,11 @@ export default function NovoTicketPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-zinc-50 py-12 px-4 sm:px-6 lg:px-8 text-zinc-600">
       <div className="max-w-2xl mx-auto">
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Novo Chamado</h1>
-          <p className="mt-2 text-gray-600">
+          <h1 className="text-3xl font-bold text-zinc-900">Novo Chamado</h1>
+          <p className="mt-2 text-zinc-600">
             Preencha o formulário abaixo para abrir um novo chamado
           </p>
         </div>
@@ -83,43 +83,43 @@ export default function NovoTicketPage() {
         ) : (
           <form onSubmit={handleSubmit} className="bg-white shadow-md rounded-lg p-6 space-y-6">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Seu Nome *</label>
+              <label className="block text-sm font-semibold text-zinc-700 mb-2">Seu Nome *</label>
               <input
                 type="text"
                 name="customer_name"
                 required
                 value={formData.customer_name}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <label className="block text-sm font-semibold text-zinc-700 mb-2">Email</label>
                 <input
                   type="email"
                   name="customer_email"
                   value={formData.customer_email}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Telefone</label>
+                <label className="block text-sm font-semibold text-zinc-700 mb-2">Telefone</label>
                 <input
                   type="tel"
                   name="customer_phone"
                   value={formData.customer_phone}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 />
               </div>
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-semibold text-zinc-700 mb-2">
                 Título do Chamado *
               </label>
               <input
@@ -128,30 +128,30 @@ export default function NovoTicketPage() {
                 required
                 value={formData.title}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Descrição *</label>
+              <label className="block text-sm font-semibold text-zinc-700 mb-2">Descrição *</label>
               <textarea
                 name="description"
                 required
                 rows={4}
                 value={formData.description}
                 onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                className="w-full px-3 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
               />
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Categoria</label>
+                <label className="block text-sm font-semibold text-zinc-700 mb-2">Categoria</label>
                 <select
                   name="category"
                   value={formData.category}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="suporte">Suporte Técnico</option>
                   <option value="comercial">Comercial</option>
@@ -161,12 +161,12 @@ export default function NovoTicketPage() {
               </div>
 
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">Prioridade</label>
+                <label className="block text-sm font-semibold text-zinc-700 mb-2">Prioridade</label>
                 <select
                   name="priority"
                   value={formData.priority}
                   onChange={handleChange}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  className="w-full px-3 py-2 border border-zinc-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                 >
                   <option value="baixa">Baixa</option>
                   <option value="normal">Normal</option>
@@ -180,14 +180,14 @@ export default function NovoTicketPage() {
               <button
                 type="button"
                 onClick={() => router.push("/")}
-                className="px-4 py-2 text-gray-700 bg-gray-200 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
+                className="px-4 py-2 text-zinc-700 bg-zinc-200 rounded-md hover:bg-zinc-300 focus:outline-none focus:ring-2 focus:ring-zinc-500"
               >
                 Cancelar
               </button>
               <button
                 type="submit"
                 disabled={loading}
-                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
               >
                 {loading ? "Enviando..." : "Enviar Chamado"}
               </button>
